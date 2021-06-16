@@ -12,21 +12,21 @@ export class AppComponent {
   weatherLocation: any;
   consolidatedWeatherList: ConsolidatedWeather[] = [];
   title: string = '';
+  city: string = ''
 
 
   constructor(private service: WeatherServiceService) {}
 
 
 
-  submit(data:any): void {
-    console.log(data.city)
-    this.service.getWeatherCity(data.city).subscribe(resp => {
+  submit(): void {
+    this.service.getWeatherCity(this.city).subscribe(resp => {
       this.weatherLocation = resp
-    })
+    });
+    this.city = '';
   }
 
   getInfo(woeId: string) {
-    console.log(woeId);
     this.service.getWeather(woeId).subscribe(res => {
       this.title = res.title;
       this.consolidatedWeatherList = res.consolidated_weather;
