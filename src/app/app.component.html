@@ -1,0 +1,36 @@
+
+<div class="container-fluid panel">
+    <h3>{{myName}}</h3>
+    <div class="row">
+      <form #cityQuery = "ngForm"  class="form-inline" (ngSubmit)="submit(cityQuery.value)">
+          <div class="col-md-5">
+            Enter the city:
+            <input
+              type="text"
+              class="form-control"
+              name="city" ngModel/>
+            <input class="form-control"
+              type="submit" value="Submit">
+          </div>
+      </form>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="row" *ngFor="let weather of weatherLocation">
+      <div class="col-md-3">
+        <button class="btn btn-default" (click)="getInfo(weather.woeid)">{{weather.title}}</button><br><br>
+      </div>
+    </div>
+
+
+      <div class="col-md-3"></div>
+      <div class="col-md-4 text-center">
+        {{title}}
+        <ul *ngFor="let item of consolidatedWeatherList" class="list-group">
+          <li class="list-group-item">{{item.applicable_date}} | {{item.weather_state_name}}</li>
+        </ul>
+      </div>
+</div>
+
